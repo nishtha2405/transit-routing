@@ -13,12 +13,8 @@ def Dij_generator():
     Returns:
         graph_object: variable containing network information.
     """
-    graph_object = None
-    try:
-        # Enter your code here
-        return graph_object
-    except:
-        return graph_object
+    graph_object = open('/content/drive/MyDrive/Datasets/ChicagoSketch_net.tntp', 'r')
+    return graph_object
 
 
 def Q1_dijkstra(source: int, destination: int, graph_object) -> int:
