@@ -34,7 +34,25 @@ def Q1_dijkstra(source: int, destination: int, graph_object) -> int:
     """
     shortest_path_distance = -1
     try:
-        # Enter your code here
-        return shortest_path_distance
+       shortest_path_distance = {v:float('inf') for v in range(graph.v)}
+    shortest_path_distance[start_vertex] = 0
+
+    pq = PriorityQueue()
+    pq.put((0, start_vertex))
+
+    while not pq.empty():
+        (dist, current_vertex) = pq.get()
+        graph.visited.append(current_vertex)
+
+        for neighbor in range(graph.v):
+            if graph.edges[current_vertex][neighbor] != -1:
+                distance = graph.edges[current_vertex][neighbor]
+                if neighbor not in graph.visited:
+                    old_cost = shortest_path_distance[neighbor]
+                    new_cost = shortest_path_distance[current_vertex] + distance
+                    if new_cost < old_cost:
+                        pq.put((new_cost, neighbor))
+                        shortest_path_distance[neighbor] = new_cost
+    return shortest_path_distance
     except:
         return shortest_path_distance
